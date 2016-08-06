@@ -2,17 +2,12 @@ Template.postSubmit.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    //prueba introducir idioma
-/*    browserLanguage: function() {
-      return navigator.language || navigator.userLanguage
-    },*/
-
-
     var post = {
       url: $(e.target).find('[name=url]').val(),
       title: $(e.target).find('[name=title]').val(),
     };
 
+    //Idioma del navegador
    var browserLang = navigator.language || navigator.userLanguage
 
     getbrowserInfo = function() {
@@ -32,19 +27,32 @@ Template.postSubmit.events({
        return M.join(' ');
      }
 
+     //Tipo de navegador que se esta usando
      var browser = getbrowserInfo();
 
     Meteor.call('postInsert', post, browserLang, browser, function(error, result) {
-      // display the error to the user and abort
+      // Muestra el error al usuario y aborta
       if (error)
         return alert(error.reason);
+      alert('comprobando url...');
+      console.log(result);
 
-        // show this result but route anyway
-      if (result.postExists)
-        alert('This link has already been posted');
+      if (result.urlNotFound){
+        alert('Url no alcanzable');
+      }
+      else {
+        // Si link ya existe avisar, pero redirigir de todas formas
+        if (result.postExists)
+          alert('Esta url ya ha sido acortada');
 
-      Router.go('postPage', {_id: result._id});
+
+/*        Meteor.call('makeShort', post.url, function(error, result){
+          console.log('resultado',result.data.id);
+        });
+  */      Router.go('postPage', {_id: result._id});
+      }
     });
+
 
   //  post._id = Posts.insert(post);
   //  Router.go('postPage', post);
