@@ -22,8 +22,8 @@ Para actualizar una app de meteor ejecutar similarmente:
     meteor update --release x.y.z
 
 
-Para iniciar la aplicación descargar el proyecto, abrir
-el terminal, ir hacia la ruta del proyecto y ejecutar:
+Para iniciar la aplicación se debe descargar el proyecto, a través
+del terminal ir hacia la ruta del proyecto y finalmente ejecutar:
 
     meteor
 
