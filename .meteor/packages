@@ -23,3 +23,4 @@ reactive-dict           # Store temporary reactive state on the client
 iron:router
 sacha:spin
 insecure
+percolate:synced-cron

@@ -1,7 +1,28 @@
 <template name="postsList">
-  <div class="posts">
+<script>
+    function onloadCallback() {
+        grecaptcha.render('recaptcha', {
+          'sitekey' : '6Lfi6yYTAAAAABeam4RuyleSusWaLsgbPhm1Zz8j',
+          callback: function() {
+            var v = grecaptcha.getResponse();
+            if(v.length != 0) {
+                document.getElementById('p').style.display = "block";
+            }
+          }
+        });
+    }
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
+  <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6Lfi6yYTAAAAABeam4RuyleSusWaLsgbPhm1Zz8j"></div>
+      <br/>
+  </form>
+  <h1>Verify to access data</h1>
+  <div id="recaptcha"></div>
+
+  <div id="p" class="posts" style="display: none;">
     {{#each posts}}
-      {{> postItem}}
+      {{> ListUrlsShorted}}
     {{/each}}
   </div>
 </template>

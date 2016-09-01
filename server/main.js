@@ -1,41 +1,28 @@
+import validUrl from 'valid-url';
 
-
-/*
-    var apiCall = function (apiUrl, callback) {
-      // try…catch allows you to handle errors
-      try {
-        var response = HTTP.get(apiUrl).data;
-        // A successful API call returns no error
-        // but the contents from the JSON response
-        callback(null, response);
-      } catch (error) {
-        // If the API responded with an error message and a payload
-        if (error.response) {
-          var errorCode = error.response.data.code;
-          var errorMessage = error.response.data.message;
-        // Otherwise use a generic error message
-        } else {
-          var errorCode = 500;
-          var errorMessage = 'Cannot access the API';
+//Tareas a realizar periodicamente por el servidor
+SyncedCron.add({
+  name: 'Verify that the urls are reachable',
+  schedule: function(parser) {
+    // parser es un objeto later.parse
+    return parser.text('every 2 minutes');
+  },
+  job: function() {
+    Posts.find().forEach(function(obj){
+      var bool;
+      if(validUrl.isUri(obj.url)){
+        Posts.update(obj._id, {$set: { reachable: true, datenoreachable: null }});
+      }
+      else{
+        var date = new Date();
+        //Si ya no era alcanzable desde la ultima comprobacion no actualiza fecha
+        if(obj.reachable!=false){
+            Posts.update(obj._id, {$set: { reachable: false, datenoreachable: date}});
         }
-        // Create an Error object and return it via callback
-        var myError = new Meteor.Error(errorCode, errorMessage);
-        callback(myError, null);
       }
-    }
-*/
+    });
+  }
+});
 
-/*	Meteor.methods({
-		shortenUrl: function(longUrl) {
-			var url = "https://www.googleapis.com/urlshortener/v1/url";
-			var data = {"longUrl": longUrl};
-			var result = HTTP.call("POST", url, {content: "application/json", data: data, timeout: 3000});
-      if(result.statusCode == 200) {
-        console.log("response received.");
-        return result.data;
-      } else {
-        console.log("Response issue: ", result.statusCode);
-        throw new Meteor.Error(result.statusCode, result.content.error);
-      }
-    }
-  });*/
+//Puesta en marcha de tareas periodicas
+SyncedCron.start();

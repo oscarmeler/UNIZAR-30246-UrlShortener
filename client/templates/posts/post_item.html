@@ -1,11 +1,13 @@
 <template name="postItem">
   <div class="post">
     <div class="post-content">
-      <h3><a href="{{url}}">{{shorted}}</a><span>{{domain}}</span></h3>
+      <h3><a href="{{shorted}}">{{shorted}}</a><span>{{domain}}</span></h3>
       <h4>Fecha de creación: {{submitted}}</h4>
       <h4>Navegador: {{browserInfo}}</h4>
       <h4>Idioma Navegador: {{browserLanguage}}</h4>
+      <h4>Sistema Operativo: {{os}}</h4>
+      <h4>Alcanzable: {{reachable}}</h4>
+      <h4>No alcanzable desde: {{datenoreachable}}</h4>
     </div>
-    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
   </div>
 </template>

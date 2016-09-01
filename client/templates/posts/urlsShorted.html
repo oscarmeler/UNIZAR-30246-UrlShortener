@@ -1,0 +1,13 @@
+<template name="ListUrlsShorted">
+  <div class="post">
+    <div class="post-content">
+      <h3><a href="{{shorted}}" class="shortedLink">{{shorted}}</a><span>{{domain}}</span></h3>
+      <h4>Alcanzable: {{reachable}}</h4>
+      <h4>No alcanzable desde: {{datenoreachable}}</h4>
+    </div>
+   <a href="{{pathFor 'urlShortedInfo'}}" class="enlaces-info">Details Html</a>
+   <a href="{{pathFor 'urlJson'}}" class="enlaces-info">Details Json</a>
+   <a href="#" id="analitycs" class="enlaces-info">Analytics</a>
+   <a href="#" id="analitycs-json" class="enlaces-info">Analytics Json</a>
+  </div>
+</template>
