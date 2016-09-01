@@ -50,12 +50,19 @@ Verificación | prueba manual e inspección de código
 
 F2 | La aplicación verificará que una URL es alcanzable antes de acortarla
 ------------ | -------------
-Notable | * Solo se puede crear una URI acortada si se verifica respuesta con estado 200 * Nivel de servicio asíncrono * Se verifica periódicamente la respuesta que la URI original devuelve * Si la última respuesta de verificación periódica no ha devuelto 200 o no es alcanzable, se devolverá una página HTML indicando desde cuándo dicha URI no es alcanzable. Este mensaje estará activo hasta que la verificación periódica no vuelva a devolver 200
+Notable | * Solo se puede crear una URI acortada si se verifica respuesta con estado 200 
+        | * Nivel de servicio asíncrono 
+        | * Se verifica periódicamente la respuesta que la URI original devuelve 
+        | * Si la última respuesta de verificación periódica no ha devuelto 200 o no es alcanzable, se devolverá una página HTML indicando desde cuándo dicha URI no es alcanzable. Este mensaje estará activo hasta que la verificación periódica no vuelva a devolver 200
 Verificación | prueba manual e inspección de código
 
 F3 | La aplicación identificará desde qué navegador y plataforma se hace una petición dado las cabeceras HTTP
 ------------ | -------------
-Sobresaliente | * Cuando se crea una URL acortada se debe identificar desde qué navegador se hace la petición y desde que plataforma, guardando la información en la Base de Datos * Se mostrará la información almacenada mediante una página HTML * Comprobación es asíncrona *Se detecta el idioma del navegador del usuario * La información anterior se muestra en formato de tabla o gráfico *Se añadirá seguridad a la página mediante el uso de la API reCAPTCHA. En orden de acceder a la información de la Base de Datos habrá que identificarse como humano mediante la API.
+Sobresaliente | * Cuando se crea una URL acortada se debe identificar desde qué navegador se hace la petición y desde que plataforma, guardando la información en la Base de Datos 
+              | * Se mostrará la información almacenada mediante una página HTML 
+              | * Comprobación es asíncrona *Se detecta el idioma del navegador del usuario 
+              | * La información anterior se muestra en formato de tabla o gráfico 
+              | * Se añadirá seguridad a la página mediante el uso de la API reCAPTCHA. En orden de acceder a la información de la Base de Datos habrá que identificarse como humano mediante la API.
 Verificación | prueba manual e inspección de código
 
 ### Tecnologías
