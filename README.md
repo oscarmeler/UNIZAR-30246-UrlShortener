@@ -81,6 +81,12 @@ Implementación | **client/** (archivos utilizados solo por el cliente)
                | **lib/** (archivos usados tanto por el cliente como el servidor)
 Verificación | 	prueba manual e inspección de código
 
+**RESTful entre máquinas (no navegadores)**
+
+Comprobar usando:
+
+       meteor run --port=host:port
+
 ### Otras Tecnologías empleadas
 * Node.js
 * MongoDb
