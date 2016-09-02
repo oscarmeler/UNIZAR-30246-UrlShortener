@@ -60,7 +60,8 @@ F3 | La aplicación identificará desde qué navegador y plataforma se hace una 
 ------------ | -------------
 Sobresaliente | * Cuando se crea una URL acortada se debe identificar desde qué navegador se hace la petición y desde que plataforma, guardando la información en la Base de Datos 
               | * Se mostrará la información almacenada mediante una página HTML 
-              | * Comprobación es asíncrona *Se detecta el idioma del navegador del usuario 
+              | * Comprobación es asíncrona 
+              | * Se detecta el idioma del navegador del usuario 
               | * La información anterior se muestra en formato de tabla o gráfico 
               | * Se añadirá seguridad a la página mediante el uso de la API reCAPTCHA. En orden de acceder a la información de la Base de Datos habrá que identificarse como humano mediante la API.
 Verificación | prueba manual e inspección de código
@@ -68,20 +69,20 @@ Verificación | prueba manual e inspección de código
 ### Tecnologías
 Tecnología | Implementada 
 ------------ | ------------- 
-RESTful cliente HTML/JavaScript y un servidor | SI
+RESTful cliente HTML/JavaScript y un servidor | NO
 SOAP entre máquinas (no navegadores) | NO
-RESTful entre máquinas (no navegadores) | SI
-Websockets cliente HTML/JavaScript y un servidor | NO
+RESTful entre máquinas (no navegadores) | NO
+Websockets cliente HTML/JavaScript y un servidor | SI
 
 ### Justificación
-RESTful cliente HTML/JavaScript y un servidor | rutas
+Websockets cliente HTML/JavaScript y un servidor | rutas
 ------------ | ------------
 Implementación | **client/** (archivos utilizados solo por el cliente)
                | **servidor/** (archivos usados solo por el servidor)
                | **lib/** (archivos usados tanto por el cliente como el servidor)
 Verificación | 	prueba manual e inspección de código
 
-**RESTful entre máquinas (no navegadores)**
+**Ejecución entre máquinas (no navegadores)**
 
 Comprobar usando:
 
@@ -92,3 +93,4 @@ Comprobar usando:
 * MongoDb
 * Meteor.js 
 * Cron (para verificación periódica en servidor)
+* Jasmine, Mocha (no completamente funcionables en 1.3, por eso han sido retirados los tests)
